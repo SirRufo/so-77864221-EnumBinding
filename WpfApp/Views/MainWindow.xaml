@@ -1,0 +1,33 @@
+﻿<Window x:Class="WpfApp.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:app="http://myapp"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:enums="clr-namespace:WpfApp.Enums"
+        xmlns:local="clr-namespace:WpfApp.Views"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:utils="clr-namespace:WpfApp.Utils"
+        xmlns:viewmodels="clr-namespace:WpfApp.ViewModels"
+        Title="MainWindow"
+        Width="800"
+        Height="450"
+        d:DataContext="{d:DesignInstance IsDesignTimeCreatable=False,
+                                   Type={x:Type viewmodels:MainWindowViewModel}}"
+        mc:Ignorable="d">
+    <Grid>
+        <StackPanel>
+            <GroupBox Header="ComboBox">
+                <ComboBox ItemsSource="{Binding Source={utils:EnumBindingSource {x:Type enums:IVAC_VT_SHIFT_SPD}}}"
+                          SelectedItem="{Binding VTShiftSPD}" />
+            </GroupBox>
+            <GroupBox Header="ListBox with RadioButton Template">
+                <ListBox ItemsSource="{Binding Source={utils:EnumBindingSource {x:Type enums:IVAC_VT_SHIFT_SPD}}}"
+                         SelectedItem="{Binding VTShiftSPD}"
+                         Style="{StaticResource EnumListStyle}" />
+            </GroupBox>
+            <GroupBox Header="TextBlock (ro)">
+                <TextBlock Text="{Binding VTShiftSPD}" />
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+</Window>
